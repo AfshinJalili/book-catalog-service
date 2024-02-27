@@ -2,9 +2,10 @@
   "name": "book-catalog-service",
   "version": "1.0.0",
   "description": "Optimizing GRPC Calls Through Caching With Redis",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "src/server.js"
   },
   "keywords": [
     "gRPC",
