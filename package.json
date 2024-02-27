@@ -1,0 +1,20 @@
+{
+  "name": "book-catalog-service",
+  "version": "1.0.0",
+  "description": "Optimizing GRPC Calls Through Caching With Redis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gRPC",
+    "Redis"
+  ],
+  "author": "Afshin Jalili <afshnjalili@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.10.1",
+    "@grpc/proto-loader": "^0.7.10",
+    "redis": "^4.6.13"
+  }
+}
