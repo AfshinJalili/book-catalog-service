@@ -32,6 +32,11 @@ server.bindAsync(
   }
 );
 
+/**
+ * Retrieves books from cache or reads and caches books if not found.
+ * @param {Function} callback - The callback function to be called with the retrieved books.
+ * @returns {Promise<void>}
+ */
 async function retrieveBooksFromFile(callback) {
   const cachedBooks = await redisClient.get("books");
   if (cachedBooks) {
@@ -43,6 +48,12 @@ async function retrieveBooksFromFile(callback) {
   }
 }
 
+/**
+ * Retrieves book details from cache or file based on the book ID.
+ * @param {number} bookId - The ID of the book to retrieve details for.
+ * @param {function} callback - The callback function to handle the result.
+ * @returns {Promise<void>}
+ */
 async function retrieveBookDetailsFromFile(bookId, callback) {
   const cachedDetails = await redisClient.get(`bookDetails:${bookId}`);
   if (cachedDetails) {
@@ -73,6 +84,12 @@ async function retrieveBookDetailsFromFile(bookId, callback) {
   }
 }
 
+/**
+ * Retrieves a list of books and returns them as a gRPC response.
+ *
+ * @param {Object} _ - The request object (unused).
+ * @param {Function} callback - The callback function to send the response.
+ */
 function listBooks(_, callback) {
   retrieveBooksFromFile((err, books) => {
     if (err) {
@@ -95,6 +112,11 @@ function listBooks(_, callback) {
   });
 }
 
+/**
+ * Retrieves the details of a book based on the provided ID.
+ * @param {Object} call - The gRPC call object.
+ * @param {Function} callback - The callback function to send the book details or error.
+ */
 function getBookDetails(call, callback) {
   const { id } = call.request;
   retrieveBookDetailsFromFile(id, (err, bookDetails) => {
@@ -109,6 +131,11 @@ function getBookDetails(call, callback) {
   });
 }
 
+/**
+ * Reads books from a file, caches them in Redis, and returns the books.
+ * @returns {Promise<Array>} The array of books.
+ * @throws {Error} If there is an error reading or parsing the books file.
+ */
 async function readAndCacheBooks() {
   console.log("Fetching books from file");
   try {
@@ -129,6 +156,14 @@ async function readAndCacheBooks() {
   }
 }
 
+/**
+ * Deletes a book from the catalog.
+ *
+ * @param {Object} call - The gRPC call object.
+ * @param {Function} callback - The callback function to send the response.
+ * @returns {Promise<void>} - A promise that resolves when the book is deleted successfully.
+ * @throws {Error} - If there is an error while processing the delete request.
+ */
 async function deleteBook(call, callback) {
   const bookId = call.request.id;
 
