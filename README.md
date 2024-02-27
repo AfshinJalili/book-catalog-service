@@ -18,13 +18,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
+- Node.js (v18 or higher)
 - Redis (v5 or higher)
 
 ### Installation
 
 1. Clone the repository:
-git clone https://github.com/yourusername/book-catalog-service.git
+git clone https://github.com/AfshinJalili/book-catalog-service.git
 
 2. Navigate to the project directory:
 cd book-catalog-service
@@ -37,7 +37,9 @@ npm install
 
 1. Start the Redis server.
 2. Run the service:
-npm start
+`npm start`
+3. Run the Client
+`node src/client.js`
 
 
 ## Using the Service
