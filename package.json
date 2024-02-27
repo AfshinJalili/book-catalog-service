@@ -4,8 +4,8 @@
   "description": "Optimizing GRPC Calls Through Caching With Redis",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "src/server.js"
+    "test": "node src/server.test.js",
+    "start": "node src/server.js"
   },
   "keywords": [
     "gRPC",
@@ -16,6 +16,9 @@
   "dependencies": {
     "@grpc/grpc-js": "^1.10.1",
     "@grpc/proto-loader": "^0.7.10",
-    "redis": "^4.6.13"
+    "chai": "^5.1.0",
+
+    "redis": "^4.6.13",
+    "sinon": "^17.0.1"
   }
 }
